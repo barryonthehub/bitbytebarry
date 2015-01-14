@@ -1,0 +1,18 @@
+/*
+this page and it's corresponding index page was created from the 
+LearnCode.academy video 
+	Bootstrap tutorial for Beginners - Responsive Design with Bootstrap 3
+	https://www.youtube.com/watch?v=no-Ntkc836w
+*/
+
+.darkBG {
+	background: #999;
+}
+
+.darkerBG {
+	background: #666;
+}
+
+.darkestBG {
+	background: #333;
+}
