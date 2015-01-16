@@ -1,18 +1,34 @@
+<?php 
+/**
+* Set question number gets the number from the url and stores it in the $number variable.
+* That ensures the mysql query stores only the results for 'n' in $query
+* $result calls the query using the $mysqli object included from database.php
+* the fetch_assoc() method gives us an array we can use in the document.
+*
+*
+*/
+?>
 <?php include 'database.php' ?>
 <?php  
 	//Set question number
 	$number = (int) $_GET['n'];
 
-	/*
-	*	Get Question
-	*/
-	$query = "SELECT * FROM 'questions'
+	//Get Question
+	$query = "SELECT * FROM `questions`
 				WHERE question_number = $number";
 
 	//Get result
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 	$question = $result->fetch_assoc(); 
+
+	//Get choices
+	$query = "SELECT * FROM `choices`
+				WHERE question_number = $number";
+
+	//Get result
+	$choices = $mysqli->query($query) or die($mysqli->error.__LINE__);
+
 ?>
 <!DOCTYPE html>
 
@@ -36,12 +52,15 @@
 		</p>
 		<form method="post" action="process.php">
 		  <ul class="choices">
-			<li><input name="choice" type="radio" value="1" />PHP: Hypertext Preprocessor</li>
-			<li><input name="choice" type="radio" value="1" />Private Home Page</li>
-			<li><input name="choice" type="radio" value="1" />Personal Home Page</li>
-			<li><input name="choice" type="radio" value="1" />Personal Hypertext Preprocessor</li>
+			<?php while($row = $choices->fetch_assoc()): ?>
+			  <li>
+				<input name="choice" type="radio" value="<?php echo $row['id']; ?>" />
+				<?php echo $row['text']; ?>
+			  </li>
+			<?php endwhile; ?>
 		  </ul>
 		  <input type="submit" value="Submit" />
+		  <input type="hidden" name="number" value="<?php echo $number; ?>" />
 		</form>
 	  </div>
 	</main>

@@ -1,4 +1,13 @@
 <?php 
+/**
+* Connects to the database by storing the connection credentials in the 
+* variables below and then passing them through the mysqli object.
+*
+* If the connection fails, the Error Handler will spit out the connect_error
+* property
+*
+* @package Quizzer 
+*/
 
 //Create connection credentials
 $db_host = 'localhost';

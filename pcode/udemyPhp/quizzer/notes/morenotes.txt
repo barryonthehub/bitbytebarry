@@ -1,0 +1,31 @@
+we wanna get the choice and the number
+
+we wanna pass it through $_POST not $_GET (the url)
+
+we're putting the $_GET variable into the $number variable.
+
+video 11
+
+question.php
+- from the questions table we want the questions text
+- we have to loop over the array
+==
+
+which variables are global/which local?
+where are they defined?
+
+create a table in the document to break them down	
+
+		Forum
+
+object 		User
+(/class?)
+method 		LogIn
+		Post
+
+properties	Name
+(settings)	Age
+var tied to Obj
+
+everything good @ 11->17:14
+then we move on to index file
