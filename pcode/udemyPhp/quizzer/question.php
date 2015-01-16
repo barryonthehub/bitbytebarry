@@ -13,6 +13,12 @@
 	//Set question number
 	$number = (int) $_GET['n'];
 
+	//Get total questions
+//3	$query = "SELECT * FROM `questions`";
+	//Get results
+//3	$results = $mysqli->query($query) or die($mysqli->error.__LINE__);
+//3	$total = $results->num_rows;
+
 	//Get Question
 	$query = "SELECT * FROM `questions`
 				WHERE question_number = $number";
@@ -46,7 +52,9 @@
 	</header>
 	<main>
 	  <div class="container">
-		<div class="current">Question 1 of 5</div>
+		<div class="current">
+		  Question <?php //4 echo $question['question_number']; ?> of <?php //2 echo $total; ?>
+		</div>
 		<p class="question">
 		  <?php echo $question['text']; ?>
 		</p>
