@@ -11,6 +11,7 @@
 	  $number = $_POST['number'];
 	  $selected_choice = $_POST['choice'];
 	  print_r($_POST);
+	  // test!
 //9	  $next = $number++;
 
 	  //Get total questions
