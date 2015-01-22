@@ -9,15 +9,16 @@
 */
 ?>
 <?php include 'database.php' ?>
+<?php session_start(); ?>
 <?php  
 	//Set question number
 	$number = (int) $_GET['n'];
 
 	//Get total questions
-//3	$query = "SELECT * FROM `questions`";
+	$query = "SELECT * FROM `questions`";
 	//Get results
-//3	$results = $mysqli->query($query) or die($mysqli->error.__LINE__);
-//3	$total = $results->num_rows;
+	$results = $mysqli->query($query) or die($mysqli->error.__LINE__);
+	$total = $results->num_rows;
 
 	//Get Question
 	$query = "SELECT * FROM `questions`
@@ -34,7 +35,6 @@
 
 	//Get result
 	$choices = $mysqli->query($query) or die($mysqli->error.__LINE__);
-
 ?>
 <!DOCTYPE html>
 
@@ -53,7 +53,7 @@
 	<main>
 	  <div class="container">
 		<div class="current">
-		  Question <?php //4 echo $question['question_number']; ?> of <?php //2 echo $total; ?>
+		  Question <?php echo $question['question_number']; ?> of <?php echo $total; ?>
 		</div>
 		<p class="question">
 		  <?php echo $question['text']; ?>

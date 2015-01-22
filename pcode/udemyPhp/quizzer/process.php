@@ -10,41 +10,38 @@
 	if($_POST){
 	  $number = $_POST['number'];
 	  $selected_choice = $_POST['choice'];
-	  print_r($_POST);
-	  // test!
-//9	  $next = $number++;
+	  $next = $number+1;
 
 	  //Get total questions
-//5	  $query = "SELECT * FROM `questions`";
+	  $query = "SELECT * FROM `questions`";
 	  //Get results
-//5	  $results = $mysqli->query($query) or die($mysqli->error.__LINE__);
-//5	  $total = $results->num_rows;
+	  $results = $mysqli->query($query) or die($mysqli->error.__LINE__);
+	  $total = $results->num_rows;
 
 	  //Get correct choice
-//9	  $query = "SELECT * FROM `choices`
-//9				WHERE question_number = $number AND is_correct = 1";
+	  $query = "SELECT * FROM `choices`
+				WHERE question_number = $number AND is_correct = 1";
 	  
 	  //Get Result
-//8	  $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+	  $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 	  
 	  //Get Row		
-//8	  $row = $result->fetch_assoc();
+	  $row = $result->fetch_assoc();
 
 	  //Set correct choice
-//8	  $correct_choice = $row['id'];
+	  $correct_choice = $row['id'];
 
 	  //Compare
-//7	  if($correct_choice == $selected_choice){
-//7		//Answer is corect
-//7		$_SESSION['score']++;
-//7	  }
+	  if($correct_choice == $selected_choice){
+		//Answer is corect
+		$_SESSION['score']++;
+	  }
 
-//1	  echo $total;
-//1	  die();
 	  //Check if last question
-//6	  if($number == $total){
-//6		header("Location: final.php");
-//6		exit();
-//6	  } else {
-//6		header("Location: question.php?n=".$next);
+	  if($number == $total){
+		header("Location: final.php");
+		exit();
+	  } else {
+		header("Location: question.php?n=".$next);
+	  }
 	}
